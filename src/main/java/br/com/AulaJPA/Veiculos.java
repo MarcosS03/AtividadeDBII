@@ -2,9 +2,12 @@ package br.com.AulaJPA;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 
 
@@ -12,8 +15,11 @@ import javax.persistence.ManyToMany;
 public class Veiculos {
 	
 	@Id
-	private String placa;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected Long id;
 	
+	
+	private String placa;
 	private String modelo;
 	private String marca;
 	private String chassi;
@@ -24,9 +30,9 @@ public class Veiculos {
 	private int potencia;
 	private int capacidade;
 	
-	@ManyToMany
+	@ManyToOne
 	@JoinColumn(name = "pessoa_id")
-	private List<Pessoa> pessoa;
+	private Pessoa pessoa;
 	
 
 	public String getPlaca() {
@@ -109,11 +115,11 @@ public class Veiculos {
 		this.capacidade = capacidade;
 	}
 
-	public List<Pessoa> getPessoa() {
+	public Pessoa getPessoa() {
 		return pessoa;
 	}
 
-	public void setPessoa(List<Pessoa> pessoa) {
+	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
 

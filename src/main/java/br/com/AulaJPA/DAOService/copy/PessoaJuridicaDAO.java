@@ -29,7 +29,7 @@ public class PessoaJuridicaDAO{
     }
     public List<PessoaJuridica> listar() {
     	EntityManager em = emf.createEntityManager();
-        TypedQuery<PessoaJuridica> query = em.createQuery("SELECT u FROM PessoaJuridica", PessoaJuridica.class);
+        TypedQuery<PessoaJuridica> query = em.createQuery("FROM PessoaJuridica", PessoaJuridica.class);
         List<PessoaJuridica> PessoaJuridica = query.getResultList();
         em.close();
         return PessoaJuridica;

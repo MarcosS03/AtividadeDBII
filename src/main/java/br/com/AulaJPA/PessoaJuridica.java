@@ -1,5 +1,8 @@
 package br.com.AulaJPA;
 
+import javax.persistence.Entity;
+
+@Entity
 public class PessoaJuridica extends Pessoa {
 	
 	private String razaoSocial;

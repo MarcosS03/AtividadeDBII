@@ -21,16 +21,16 @@ public class PessoaFisicaDAO {
         em.close();
     }
 
-    public Pessoa buscarPorId(Long id) {
+    public PessoaFisica buscarPorId(Long id) {
         EntityManager em = emf.createEntityManager();
-        PessoaFisica pessoa = em.find(PessoaFisica.class, id);
+        PessoaFisica pessoaFisica = em.find(PessoaFisica.class, id);
         em.close();
-        return pessoa;
+        return pessoaFisica;
     }
 
     public List<PessoaFisica> listar() {
         EntityManager em = emf.createEntityManager();
-        List<PessoaFisica> pessoas = em.createQuery("FROM Pessoa", PessoaFisica.class).getResultList();
+        List<PessoaFisica> pessoas = em.createQuery("SELECT u FROM PessoaFisica u LEFT JOIN FETCH u.telefones", PessoaFisica.class).getResultList();
         em.close();
         return pessoas;
     }

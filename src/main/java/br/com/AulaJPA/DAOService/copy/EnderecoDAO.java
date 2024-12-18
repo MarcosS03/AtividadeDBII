@@ -23,9 +23,9 @@ import br.com.AulaJPA.Telefones;
 	        em.close();
 	    }
 
-	    public Telefones buscarPorId(Long id) {
+	    public Endereco buscarPorId(Long id) {
 	        EntityManager em = emf.createEntityManager();
-	        Telefones endereco = em.find(Telefones.class, id);
+	        Endereco endereco = em.find(Endereco.class, id);
 	        em.close();
 	        return endereco;
 	    }
